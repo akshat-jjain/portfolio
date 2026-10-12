@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root,
+:root[data-theme="dark"] {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --background: #090b10;
+  --foreground: #e8edf6;
+  --foreground-muted: #9aa8bc;
+  --border: #1f2937;
+  --panel: #0f1622;
+  --accent: #7c9cff;
+  --accent-foreground: #0b1020;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --background: #f5f8ff;
+  --foreground: #0d1322;
+  --foreground-muted: #465063;
+  --border: #ccd8ec;
+  --panel: #ffffff;
+  --accent: #2547d0;
+  --accent-foreground: #f8fbff;
+  color-scheme: light;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border);
+  --color-panel: var(--panel);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+a {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .code-panel {
+    animation: pulseBorder 3.5s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes pulseBorder {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(124, 156, 255, 0.22);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(124, 156, 255, 0);
+  }
+}
